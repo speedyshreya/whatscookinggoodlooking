@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Mood Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .mood-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>How are we feeling today?</h1>
+        <button class="mood-button" onclick="showContent('funky')">Funky</button>
+        <button class="mood-button" onclick="showContent('preGym')">Need pre-gym fuel</button>
+        <button class="mood-button" onclick="showContent('postGym')">Need post-gym satisfaction</button>
+        <button class="mood-button" onclick="showContent('hangry')">Hangry</button>
+        <button class="mood-button" onclick="showContent('veryHangry')">Very Hangry</button>
+        <button class="mood-button" onclick="showContent('extremelyHangry')">Extremely Hangry</button>
+        <button class="mood-button" onclick="showContent('hangry')">Hangry</button>
+        <button class="mood-button" onclick="showContent('experimental1')">Experimental - Level1</button>
+        <button class="mood-button" onclick="showContent('adventurous')">Adventurous</button>
+        <button class="mood-button" onclick="showContent('quickComfort')">Quick Comfort</button>
+        <button class="mood-button" onclick="showContent('sad')">Sad :/</button>
+        <button class="mood-button" onclick="showContent('bored')">Bored and have too much time</button>
+        
+        <div id="content" class="content">
+            <h2>Recipes</h2>
+            <ul id="recipe-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        const recipes = {
+            funky: [
+                'Pancakes with Chipotle Ranch (unsweet/unflavoured Pancake batter preferable)',
+                'Upma, sunny side up, schezwan chutney/hot sauce, chile lemon, orange juice',
+                'Poha, fries (bake potato in oven), sunny side up, ranch, blueberries, avocado slices',
+                'Lemon Corriander Maggi - saute magic masala, garlic, corriander leaves and squeeze a fuck ton of lemon to it, and add your boiled noodles to this', 
+                'Peanut Oil Ramen - saute your spices (magic masala/ ramen masala) in chilli oil, and add peanut butter to it (watch the flame, this one gets smokey real quick), and add your noodles to it'
+            ],
+            preGym: [
+                'Peanut butter, protein powder, banana, frozen berries, chia seeds- smoothie blend'
+            ],
+
+            postGym: [
+                'omelette with cheese slice folded in, dhaniya chutney, slit a banana\'s throat along the longer axis and stuff peanut butter in with a butter knife'
+    
+            ],
+            quickComfort:[
+                'Egg, cocoa powder, apple slices- mix and bake', 
+                'soup and scrambled eggs with a dash of pepper and butter/ghee',
+                'yogurt and blueberries'
+
+            ],
+            adventurous: [
+                'Egg fried rice, schezwan chutney/masala, sambhar, curd, blueberries',
+                'Make Dahi Sandwich. Call me for the recipe i\'m too lazy to type here xoxo',
+                'Paella'
+            ],
+            tired: [
+                'Eat a block of cheese',
+                'Lick some butter',
+                'Protein Bar?'
+            ], 
+            veryHangry: [
+                'rap time- heat up roti/tortilla + add an egg to the wrap (thela egg roll style), add sauces, add avocado/lettuce/spinach leaves for health, add a cheese slice (optional), add protein if you have - tofu/paneer, add tomatoes, onions'
+            ],
+            bored: [
+                'make moong dal halwa. idk how to do it. google it!!!'
+            ]
+        };
+
+        function showContent(mood) {
+            const content = document.getElementById('content');
+            const recipeList = document.getElementById('recipe-list');
+            recipeList.innerHTML = '';
+
+            recipes[mood].forEach(recipe => {
+                const li = document.createElement('li');
+                li.textContent = recipe;
+                recipeList.appendChild(li);
+            });
+
+            content.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
